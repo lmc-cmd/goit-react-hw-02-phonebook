@@ -2,7 +2,10 @@ import s from '../Form/Form.module.scss';
 const Form = ({ state, hendleInputChange, hendleSubmit }) => {
   return (
     <form className={s.form} action="" onSubmit={hendleSubmit}>
+      Phonebook
       <label htmlFor="">
+        {' '}
+        name
         <input
           className={s['name-input']}
           value={state.name}
@@ -15,6 +18,8 @@ const Form = ({ state, hendleInputChange, hendleSubmit }) => {
         />
       </label>
       <label htmlFor="">
+        {' '}
+        number
         <input
           className={s['name-input']}
           value={state.number}

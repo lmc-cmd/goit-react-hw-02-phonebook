@@ -1,6 +1,7 @@
+import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import Form from './Form/Form';
-
+import Contacts from './Contacts/Contacts';
 export class App extends Component {
   state = {
     contacts: [],
@@ -14,7 +15,12 @@ export class App extends Component {
   };
   hendleSubmit = event => {
     event.preventDefault();
-    console.log('state :>> ', this.state);
+    const contact = {
+      id: nanoid(),
+      name: this.state.name,
+      number: this.state.number,
+    };
+    this.state.contacts.push(contact);
   };
 
   render() {
@@ -34,6 +40,7 @@ export class App extends Component {
           hendleInputChange={this.hendleInputChange}
           hendleSubmit={this.hendleSubmit}
         />
+        <Contacts state={this.state.contacts} />
       </div>
     );
   }
