@@ -5,10 +5,16 @@ export class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
   hendleInputChange = event => {
-    this.setState({ name: event.currentTarget.value });
+    const { name, value } = event.currentTarget;
+    this.setState({ [name]: value });
+  };
+  hendleSubmit = event => {
+    event.preventDefault();
+    console.log('state :>> ', this.state);
   };
 
   render() {
@@ -23,7 +29,11 @@ export class App extends Component {
           color: '#010101',
         }}
       >
-        <Form state={this.state} hendleInputChange />
+        <Form
+          state={this.state}
+          hendleInputChange={this.hendleInputChange}
+          hendleSubmit={this.hendleSubmit}
+        />
       </div>
     );
   }
