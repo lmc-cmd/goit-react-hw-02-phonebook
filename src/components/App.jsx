@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
 import Form from './Form/Form';
-import Contacts from './Contacts/Contacts';
+import ContactsList from './ContactsList/ContactsList';
 export class App extends Component {
   state = {
     contacts: [],
@@ -33,6 +33,7 @@ export class App extends Component {
           alignItems: 'center',
           fontSize: 40,
           color: '#010101',
+          flexDirection: 'column',
         }}
       >
         <Form
@@ -40,7 +41,7 @@ export class App extends Component {
           hendleInputChange={this.hendleInputChange}
           hendleSubmit={this.hendleSubmit}
         />
-        <Contacts state={this.state.contacts} />
+        <ContactsList contacts={this.state.contacts} />
       </div>
     );
   }
