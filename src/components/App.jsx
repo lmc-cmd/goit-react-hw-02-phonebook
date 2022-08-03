@@ -1,30 +1,27 @@
 import { nanoid } from 'nanoid';
 import { Component } from 'react';
-import Form from './Form/Form';
 import ContactsList from './ContactsList/ContactsList';
+import Form from './Form/Form';
+
 export class App extends Component {
   state = {
     contacts: [],
-    name: '',
-    number: '',
   };
 
-  hendleInputChange = event => {
-    const { name, value } = event.currentTarget;
-    this.setState({ [name]: value });
-  };
-  hendleSubmit = event => {
-    event.preventDefault();
+  // hendleInputChange = event => {
+  //   const { name, value } = event.currentTarget;
+  //   this.setState({ [name]: value });
+  // };
+  formSubmitHendler = formState => {
     const contact = {
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name: formState.name,
+      number: formState.number,
     };
     this.state.contacts.push(contact);
   };
 
   render() {
-    // const { contacts } = this.state;
     return (
       <div
         style={{
@@ -37,11 +34,9 @@ export class App extends Component {
           flexDirection: 'column',
         }}
       >
-        <Form
-          state={this.state}
-          hendleInputChange={this.hendleInputChange}
-          hendleSubmit={this.hendleSubmit}
-        />
+        <h1>Phonebook</h1>
+        <Form onSubmit={this.formSubmitHendler} />
+        <h2>Contacts</h2>
         <ContactsList contacts={this.state.contacts} />
       </div>
     );
