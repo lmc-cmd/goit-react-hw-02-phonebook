@@ -40,6 +40,11 @@ export class App extends Component {
       el.name.toLowerCase().includes(normalizedFilter)
     );
   };
+  removeContact = dataId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(el => el.id !== dataId),
+    }));
+  };
 
   render() {
     const filteredContacts = this.filetedContacts();
@@ -59,7 +64,10 @@ export class App extends Component {
         <Form onSubmit={this.formSubmitHendler} />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} filterhandler={this.filterhandler} />
-        <ContactsList contacts={filteredContacts} />
+        <ContactsList
+          contacts={filteredContacts}
+          removeContact={this.removeContact}
+        />
       </div>
     );
   }

@@ -2,7 +2,7 @@
 import ContactsItem from '../ContactsItem/ContactsItem';
 import s from './ContactsList.module.scss';
 
-const ContactsList = ({ contacts, onDeleteContact }) => {
+const ContactsList = ({ contacts, removeContact }) => {
   return (
     <div>
       <ul className={s.list}>
@@ -11,7 +11,7 @@ const ContactsList = ({ contacts, onDeleteContact }) => {
             key={id}
             name={name}
             number={number}
-            onDeleteContact={() => onDeleteContact(id)}
+            onDeleteContact={() => removeContact(id)}
           />
         ))}
       </ul>
