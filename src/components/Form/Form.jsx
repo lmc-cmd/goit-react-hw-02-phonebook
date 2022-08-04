@@ -49,7 +49,10 @@ class Form extends Component {
             required
           />
         </label>
-        <button type="submit"> add contact</button>
+        <button type="submit" className={s['submit-btn']}>
+          {' '}
+          add contact
+        </button>
       </form>
     );
   }
